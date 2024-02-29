@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/searchNav">
+
+    <navigation
+        android:id="@+id/searchNav"
+        app:startDestination="@id/searchFragment">
+
+        <fragment
+            android:id="@+id/searchFragment"
+            android:name="com.example.singlestep.ui.search.SearchFragment"
+            android:label="fragment_home"
+            tools:layout="@layout/fragment_explore">
+            <action
+                android:id="@+id/action_searchFragment_to_detailFragment"
+                app:destination="@id/flightFragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/flightFragment"
+            android:name="com.example.singlestep.ui.flights.FlightFragment"
+            android:label="fragment_flight"
+            tools:layout="@layout/fragment_flight">
+            <argument
+                android:name="tripParameters"
+                app:argType="com.example.singlestep.model.TripParameters" />
+            <action
+                android:id="@+id/action_flightFragment_to_hotelFragment"
+                app:destination="@id/hotelFragment" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/hotelFragment"
+            android:name="com.example.singlestep.ui.hotels.HotelFragment"
+            android:label="fragment_hotel"
+            tools:layout="@layout/fragment_hotel">
+            <argument
+                android:name="tripParameters"
+                app:argType="com.example.singlestep.model.TripParameters" />
+        </fragment>
+
+
+    </navigation>
+
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.example.singlestep.ui.explore.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore" />
+
+    <fragment
+        android:id="@+id/tripsFragment"
+        android:name="com.example.singlestep.ui.mytrips.MyTripsFragment"
+        android:label="fragment_trips"
+        tools:layout="@layout/fragment_my_trips" />
+
+</navigation>
